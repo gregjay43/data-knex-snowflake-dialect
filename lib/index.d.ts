@@ -4,7 +4,7 @@ import { SchemaCompiler, TableCompiler } from "./schema";
 export declare class SnowflakeDialect extends knex.Client {
     constructor(config?: any);
     transaction(container: any, config: any, outerTx: any): Knex.Transaction;
-    queryCompiler(builder: any, formatter: any): QueryCompiler;
+    queryCompiler(builder: any): QueryCompiler;
     columnBuilder(tableBuilder: any, type: any, args: any): any;
     columnCompiler(tableCompiler: any, columnBuilder: any): any;
     tableCompiler(tableBuilder: any): TableCompiler;

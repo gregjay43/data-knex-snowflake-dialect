@@ -1,5 +1,5 @@
 import { Knex, knex } from "knex";
-import { defer, fromPairs, isArray, map, toPairs } from "lodash";
+import { defer, fromPairs, isArray, toPairs } from "lodash";
 import { QueryCompiler } from "./query/QueryCompiler";
 import { SchemaCompiler, TableCompiler } from "./schema";
 import * as ColumnBuilder from "knex/lib/schema/columnbuilder";
@@ -49,9 +49,9 @@ export class SnowflakeDialect extends knex.Client {
     };
     return transax;
   }
-  // @ts-ignore
-  queryCompiler(builder: any, formatter: any) {
-    return new QueryCompiler(this, builder, formatter);
+
+  queryCompiler(builder: any) {
+    return new QueryCompiler(this, builder, null);
   }
 
   columnBuilder(tableBuilder: any, type: any, args: any) {
