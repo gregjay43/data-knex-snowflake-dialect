@@ -112,7 +112,7 @@ export class SnowflakeDialect extends knex.Client {
 
   // Get a raw connection, called by the `pool` whenever a new
   // connection needs to be added to the pool.
-  acquireRawConnection() {
+  async acquireRawConnection() {
     return new Promise((resolver, rejecter) => {
       // @ts-ignore
       const connection = this.driver.createConnection(this.connectionSettings);
@@ -153,7 +153,7 @@ export class SnowflakeDialect extends knex.Client {
 
   // Runs the query on the specified connection, providing the bindings
   // and any other necessary prep work.
-  _query(connection: any, obj: any) {
+  async _query(connection: any, obj: any) {
     if (!obj || typeof obj === "string") obj = { sql: obj };
     return new Promise((resolver: any, rejecter: any) => {
       if (!obj.sql) {
